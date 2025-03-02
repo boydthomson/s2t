@@ -4,12 +4,12 @@
 kill $(cat $HOME/s2t/tmp/recording_pid)
 
 # Transcribe audio
-source $HOME/env_sandbox/bin/activate
-whisper $HOME/s2t/tmp/recording.wav --model tiny --output_dir="${HOME}/s2t/tmp/" --output_format="txt"
+# source $HOME/env_sandbox/bin/activate
+whisper $HOME/dev/s2t/tmp/recording.wav --model tiny --output_dir="${HOME}/dev/s2t/tmp/" --output_format="txt"
 deactivate
 
 # Temporary file for transcription
-TRANSCRIPTION_FILE="$HOME/s2t/tmp/recording.txt"
+TRANSCRIPTION_FILE="$HOME/dev/s2t/tmp/recording.txt"
 
 # Copy transcription to clipboard
 xclip -selection clipboard < $TRANSCRIPTION_FILE
@@ -24,7 +24,4 @@ sleep 0.1
 xdotool key ctrl+v  # Use whichever key combination is appropriate
 
 # Clean up
-rm -rf $HOME/s2t/tmp/
-
-
-
+rm -rf $HOME/dev/s2t/tmp/

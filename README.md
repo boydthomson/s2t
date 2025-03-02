@@ -56,3 +56,24 @@ Contributions are welcome! If you have improvements or bug fixes, please open a 
 
 ## Credit
 https://chat.openai.com/share/db168b73-7dfe-4467-a450-35791e48403b
+
+##UPDATE###
+add the following to ~/.xbindkeys
+# Toggle recording with notification
+"~/dev/s2t/toggle-recording.sh"
+    F12
+
+add the following to ~/.profile
+# s2t Setup by Boyd
+# Start xbindkeys if it's not already running
+if ! pgrep -x "xbindkeys" > /dev/null; then
+    xbindkeys &
+fi
+
+# Start the Whisper daemon if it's not already running
+if ! pgrep -f "whisper-daemon.py" > /dev/null; then
+    source ~/dev/s2t/venv-py312/bin/activate
+    python3 ~/dev/s2t/whisper-daemon.py > ~/.whisper-daemon.log 2>&1 &
+
+
+Whisper did not work for me with Python3.13 so I used 3.312
